@@ -1,0 +1,17 @@
+CREATE TABLE books (
+    id   VARCHAR (16) PRIMARY KEY
+                      UNIQUE
+                      NOT NULL,
+    name VARCHAR      NOT NULL
+);
+CREATE TABLE avail (
+    id        VARCHAR (16) REFERENCES books (id),
+    available INTEGER      DEFAULT (1),
+    total     INTEGER      DEFAULT (1) 
+);
+CREATE TABLE record (
+    book_id      VARCHAR (16) REFERENCES books (id),
+    id           VARCHAR      PRIMARY KEY,
+    deposited_on DATETIME     NOT NULL,
+    issued_on    DATETIME     NOT NULL
+);
